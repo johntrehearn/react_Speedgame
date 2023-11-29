@@ -1,5 +1,6 @@
+
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Pixelify Sans', cursive;
   line-height: 1.5;
   font-weight: 400;
 
@@ -13,10 +14,158 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
+
+
+/* screens are San Serif - it is a safe fonts for screen
+Printing Serif
+games are any font you want - BUT CONSIDERING USER EXPERIANCE */
+
+body {
+    font-family: 'Pixelify Sans', cursive;
+    background-image: linear-gradient(to bottom, rgb(10, 39, 19), rgb(18, 18, 222));
+    background-attachment: fixed;
+    font-family: 'lato', sans-serif;
+    text-align: center;
+    background-image: url('jungle_river.JPG');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+h1 {
+    font-family: 'Pixelify Sans', cursive;
+}
+
+p {
+    font-family: 'Pixelify Sans', cursive;
+    color: blue;
+    font-weight: 900;
+}
+
+/* .close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+} */
+
+
+/* #container {
+    margin-top: 10vh;
+    text-align: center;
+
+
+}
+
+h1 {
+    font-family: 'Pixelify Sans', cursive;
+    font-size: 15rem;
+    color: rgb(4, 51, 42);
+    margin-top: 10vh;
+    padding: 50px 0;
+    text-align: center;
+}
+
+h2 {
+    margin-top: 5vh;
+    font-size: 90px;
+    color: rgb(15, 1, 13);
+} */
+/* 
+p {
+    font-family: 'Pixelify Sans', cursive;
+    font-size: 3rem;
+    margin-top: 5vh;
+    font-size: 15rem;
+    color: brown;
+}
+
+button {
+    margin-top: 100px;
+    width: 500px;
+    height: 200px;
+    border-radius: 10px;
+    background-color: rgb(21, 104, 35);
+    font-size: 58px;
+    font-family: 'Pixelify Sans', cursive;
+    border: black, solid, 25px;
+}
+
+.circles {
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+}
+*/
+
+
+.circle_container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+}
+
+.circle {
+    width: 30vh;
+    height: 30vh;
+    background-color: rgb(9, 70, 16);
+    border-radius: 50%;
+   /*Puts number in center*/
+  display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 1rem;
+    /* to stop people clicking before it starts*/
+  pointer-events: none;
+    background-image: url('treee.JPG');
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+
+/* So it can be added to the circle */
+
+/* .circle.active {
+    background-color: tomato;
+    background-image: url('Towers.JPG');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(171, 156, 133);
+    opacity: 90%;
+}
+
+.modal_content {
+    background-color: rgb(208, 218, 214);
+    margin: 10% auto;
+    padding: 15px;
+    border: 1px solid black;
+    width: 80%;
+    height: 80%;
+}
+
+.close {
+    color: rgb(27, 12, 230);
+    float: right;
+
+    font: 300px;
+    font-weight: bold;
+    height: 50px;
+}
+  */

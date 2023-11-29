@@ -1,12 +1,22 @@
+import { useState } from 'react';
+
 function NewGame({onclick}) {
+
+    const [name, setName] = useState('');
+
+    const inputHandler =(e) => {
+        setName(e.target.value)
+    }
     return (
         <div>
-            <h2>Start a game by choosing difficulty and entering your name</h2>
-            <input type="text" />
+            <h2>Start a game by choosing difficulty and entering your 
+                name</h2>
+            <input type="text" onChange={inputHandler} />
             <div>
-                <button onClick={()=> onclick('easy')}>Easy</button>
-                <button onClick={()=> onclick('medium')}>Medium</button>
-                <button onClick={()=> onclick('hard')}>Hard</button>
+             {/*  binding it to the data to the function to send it to the event /click handler */}
+                <button onClick={()=> onclick('easy', name)}>Easy</button>
+                <button onClick={()=> onclick('medium', name)}>Medium</button>
+                <button onClick={()=> onclick('hard', name)}>Hard</button>
                 
             </div>
         </div>
