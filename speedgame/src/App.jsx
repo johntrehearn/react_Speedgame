@@ -39,6 +39,7 @@ const gameSetHandler = (level, name) => {
   randomNumb();
 }
 
+
   const closeHandler = () => {
   setGameOver(!gameOver)
   setgameLaunch(!gameLaunch)
