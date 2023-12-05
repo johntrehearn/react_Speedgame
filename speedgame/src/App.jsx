@@ -4,6 +4,7 @@ import { levels } from './levels'
 import Circle from './UI_components/Circle'
 import Game from './components/Game'
 import GameOver from './components/GameOver'
+import { useRef } from 'react'
 
 function getRndInteger(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
@@ -19,9 +20,9 @@ function App() {
   const [gameOver, setGameOver] = useState(false)
   const [current, setCurrent] = useState(-1);
 
-  const 
+  const timeoutIdRef = useRef(null)
 
-  let timer;
+  
   let pace = 1000;
   let levelsAmount;
 
@@ -59,7 +60,9 @@ function App() {
   const stopHandler = () => {
     setGameOn(!gameOn)
     setGameOver(!gameOver)
-    /* clearTimeout(timer) */
+
+    clearTimeout(timeoutIdRef.current);
+    timeoutIdRef.current = null;
   }
 
   const closeHandler = () => {
@@ -84,8 +87,9 @@ function App() {
 
     } while (nextActive === current);
     setCurrent(nextActive);
+    
 
-    timer = setTimeout(randomNumb, pace)
+   timeoutIdRef.current = setTimeout(randomNumb, pace)
     console.log(nextActive);
   };
 
