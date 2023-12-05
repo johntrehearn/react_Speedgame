@@ -73,8 +73,12 @@ function App() {
   // need to bind the click handler. i.e. you need to pass it
 
   const clickHandler = (id) => {
-    console.log('circle was clicked:', id);
-    console.log("score", score)
+    console.log("circle clicked")
+   if (current !== id) {
+    stopHandler();
+    console.log("score is", score)
+    return;
+   }
     setScore(score + 100)
   };
 

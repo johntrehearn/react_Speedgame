@@ -10,7 +10,8 @@ function Game({ score, circles, stopHandler, clickHandler, current}) {
                     {circles.map((_, i) => (
                     <Circle key={i} 
                     clickHandler={clickHandler} 
-                    current={current === i}/>
+                    current={current === i}
+                    id={i}/>
                     ))}
                 </div>
                 <button onClick={stopHandler}>Stop game</button>
