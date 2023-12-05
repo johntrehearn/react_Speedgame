@@ -60,7 +60,6 @@ function App() {
   const stopHandler = () => {
     setGameOn(!gameOn)
     setGameOver(!gameOver)
-
     clearTimeout(timeoutIdRef.current);
     timeoutIdRef.current = null;
   }
@@ -103,7 +102,12 @@ function App() {
 
         <h1>Save the Jungle</h1>
         {gameLaunch && <NewGame onclick={gameSetHandler} />}
-        {gameOn && (<Game score={score} circles={circles} stopHandler={stopHandler} clickHandler={clickHandler} />)}
+        {gameOn && (<Game score={score}
+         circles={circles} 
+         stopHandler={stopHandler} 
+         clickHandler={clickHandler}
+         current={current}
+         />)}
         {gameOver && (<GameOver closeHandler={closeHandler} {...player} score={score}/>)}
       </div>
 
