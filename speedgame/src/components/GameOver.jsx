@@ -3,7 +3,7 @@ function GameOver({closeHandler, level, score, name}) {
         <div>
             <div className='game_over_modal'>
                 <div className='modal_text'>
-                    <h2>Thanks for Playing {name}. You played at level{level}</h2>
+                    <h2>Thanks for Playing {name}. You played at level {level}</h2>
                     <p className='game_score'>Your score today was: {score}</p>
                     <p className='game_over_text'>Why not play again and aim for greatness</p>
                 </div>

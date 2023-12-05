@@ -21,6 +21,9 @@ function App() {
   const [current, setCurrent] = useState(-1);
 
   const timeoutIdRef = useRef(null)
+  const rounds = useRef(0)
+
+  console.log(rounds);
 
   
   let pace = 1000;
@@ -83,6 +86,9 @@ function App() {
   };
 
   const randomNumb = () => {
+    if (rounds.current >= 3) {
+      stopHandler();
+    }
     let nextActive;
 
     do {
@@ -90,6 +96,8 @@ function App() {
 
     } while (nextActive === current);
     setCurrent(nextActive);
+
+    rounds.current++;
     
 
    timeoutIdRef.current = setTimeout(randomNumb, pace)
