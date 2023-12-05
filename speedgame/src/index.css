@@ -132,7 +132,7 @@ button {
 
 /* So it can be added to the circle */
 
-/* .circle.active {
+.circle.active {
     background-color: tomato;
     background-image: url('Towers.JPG');
     background-repeat: no-repeat;
@@ -151,21 +151,42 @@ button {
     opacity: 90%;
 }
 
-.modal_content {
+.game_over_modal{
     background-color: rgb(208, 218, 214);
-    margin: 10% auto;
+    margin-top: 50px;
+    margin-left: 110px;
     padding: 15px;
-    border: 1px solid black;
+    border: 5px solid rgb(248, 2, 2);
     width: 80%;
     height: 80%;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    opacity: 90%;
+}
+
+.modal_text {
+    background-color: rgb(26, 211, 137);
+    margin-top: 90px;
+    
+    padding: 15px;
+
+}
+
+.game_score {
+    margin-top: 20px;
+    color: red;
+}
+
+.game_over_text {
+    margin-top: 20px;
 }
 
 .close {
     color: rgb(27, 12, 230);
     float: right;
-
     font: 300px;
     font-weight: bold;
     height: 50px;
 }
-  */

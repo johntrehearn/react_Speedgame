@@ -5,6 +5,10 @@ import Circle from './UI_components/Circle'
 import Game from './components/Game'
 import GameOver from './components/GameOver'
 
+function getRndInteger(min, max) {
+  return Math.floor(Math.random() * (max - min) ) + min;
+}
+
 function App() {
 
 const [player, setPlayer] = useState()
@@ -13,40 +17,64 @@ const [score, setScore] = useState(10)
 const [gameLaunch, setgameLaunch] = useState(true)
 const [gameOn, setGameOn] = useState(false)
 const [gameOver, setGameOver] = useState(false)
+const [current, setCurrent] = useState(-1);
+
+let timer;
+let pace = 1000;
 
 const gameSetHandler = (level, name) => {
-  // based on level, we find the matching object from levels array, and then make a array for the circles, with amount in the object.
-
-  // using method find index. It is a method that uses a callback. Checking if the element satisfies the testing function AND RETURNS THE INDEX
-
-  //MATCHING THE NAME AND THE LEVEL
-
   const levelIndex = levels.findIndex(el => el.name === level);
   const levelAmount = levels[levelIndex].amount;
-
   const circlesArray = Array.from({ length: levelAmount}, (x, i) => i);
-
   setCircles(circlesArray)
-
   setPlayer(
     {
       level: level,
       name: name,
-
   }
   )
 
   setgameLaunch(!gameLaunch)
   setGameOn(!gameOn)
-
+  randomNumb();
 }
+
+  const closeHandler = () => {
+  setGameOver(!gameOver)
+  setgameLaunch(!gameLaunch)
+  setScore(0)
+}
+
+// need to bind the click handler. i.e. you need to pass it
+
+const clickHandler = (id) => {
+  console.log('circle was clicked:', id);
+  console.log("score", score)
+  setScore(score + 100)
+};
+
+const randomNumb = () => {
+  let nextActive;
+
+  do {
+    nextActive = getRndInteger(0, circles.length)
+
+  } while (nextActive === current);
+
+  setCurrent(nextActive);
+
+  timer = setTimeout(randomNumb, pace)
+ 
+};
+
 
 const stopHandler = () => {
   setGameOn(!gameOn)
   setGameOver(!gameOver)
+  clearTimeout(timer)
 }
 
-console.log(player);
+
 
   return (
     <>
@@ -54,7 +82,7 @@ console.log(player);
 
     <h1>Save the Jungle</h1>
     {gameLaunch && <NewGame onclick={gameSetHandler}/>}
-    {gameOn && <Game score={score} circles={circles} stopHandler={stopHandler}/>}
+    {gameOn && <Game score={score} circles={circles} stopHandler={stopHandler} clickHandler={clickHandler}/>}
     {gameOver && <GameOver/>}
     </div>
       
