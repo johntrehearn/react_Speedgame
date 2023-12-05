@@ -19,8 +19,11 @@ function App() {
   const [gameOver, setGameOver] = useState(false)
   const [current, setCurrent] = useState(-1);
 
+  const 
+
   let timer;
   let pace = 1000;
+  let levelsAmount;
 
   const gameSetHandler = (level, name) => {
 
@@ -32,7 +35,8 @@ function App() {
 
     /* as it is object we can also do it this way - because of distructing */
 
-    const { amount } = levels.find((el) => el.name === level)
+    const { amount } = levels.find((el) => el.name === level);
+    levelsAmount = amount;
 
     // Magical method creating new array based on the length
     /*  old way commented out above */
@@ -76,7 +80,7 @@ function App() {
     let nextActive;
 
     do {
-      nextActive = getRndInteger(0, 5)
+      nextActive = getRndInteger(0, levelsAmount)
 
     } while (nextActive === current);
     setCurrent(nextActive);
@@ -95,8 +99,8 @@ function App() {
 
         <h1>Save the Jungle</h1>
         {gameLaunch && <NewGame onclick={gameSetHandler} />}
-        {gameOn && <Game score={score} circles={circles} stopHandler={stopHandler} clickHandler={clickHandler} />}
-        {gameOver && <GameOver />}
+        {gameOn && (<Game score={score} circles={circles} stopHandler={stopHandler} clickHandler={clickHandler} />)}
+        {gameOver && (<GameOver closeHandler={closeHandler} {...player} score={score}/>)}
       </div>
 
     </>
