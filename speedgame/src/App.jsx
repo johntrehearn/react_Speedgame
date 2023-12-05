@@ -22,10 +22,9 @@ function App() {
 
   const timeoutIdRef = useRef(null)
   const rounds = useRef(0)
+  // use below to store current number
+  const currentInst = useRef(0);
 
-  console.log(rounds);
-
-  
   let pace = 1000;
   let levelsAmount;
 
@@ -83,6 +82,7 @@ function App() {
     return;
    }
     setScore(score + 100)
+    rounds.current--;
   };
 
   const randomNumb = () => {
@@ -94,14 +94,17 @@ function App() {
     do {
       nextActive = getRndInteger(0, levelsAmount)
 
-    } while (nextActive === current);
+    } while (nextActive === currentInst.current);
     setCurrent(nextActive);
+    currentInst.current = nextActive;
 
     rounds.current++;
     
 
    timeoutIdRef.current = setTimeout(randomNumb, pace)
     console.log(nextActive);
+    pace *= 0.95;
+    console.log(nextActive)
   };
 
 
