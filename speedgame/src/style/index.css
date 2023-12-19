@@ -28,10 +28,11 @@ games are any font you want - BUT CONSIDERING USER EXPERIANCE */
 body {
     font-family: 'Pixelify Sans', cursive;
     background-image: linear-gradient(to bottom, rgb(10, 39, 19), rgb(18, 18, 222));
+    height: 100vh;
     background-attachment: fixed;
     font-family: 'lato', sans-serif;
     text-align: center;
-    background-image: url('jungle_river.JPG');
+    background-image: url('../assets/jungle_river.JPG');
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -125,14 +126,11 @@ button {
     height: 30vh;
     background-color: rgb(9, 70, 16);
     border-radius: 50%;
-   /*Puts number in center*/
   display: flex;
     align-items: center;
     justify-content: center;
     margin: 1rem;
-    /* to stop people clicking before it starts*/
- /*  pointer-events: none; */
-    background-image: url('treee.JPG');
+    background-image: url('../assets/treee.JPG');
     background-repeat: no-repeat;
     background-size: cover;
 
@@ -141,8 +139,8 @@ button {
 /* So it can be added to the circle */
 
 .circle.active {
-    background-color: tomato;
-    background-image: url('Towers.JPG');
+    background-color: rgb(255, 71, 83);
+    background-image: url('../assets/Towers.JPG');
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -161,21 +159,21 @@ button {
 
 .game_over_modal{
     background-color: rgb(208, 218, 214);
-    margin-top: 150px;
-    margin-left: 110px;
+    margin-top: 20vh;
+    margin-left: 20vh;
     padding: 15px;
-    border: 5px solid rgb(248, 2, 2);
+    border: 5px solid rgb(2, 10, 248);
     width: 80%;
     height: 70%;
     position: fixed;
     z-index: 1;
     left: 0;
     top: 0;
-    opacity: 90%;
+    
 }
 
 .modal_text {
-    background-color: rgb(26, 211, 137);
+    background-color: rgb(23, 75, 4);
     margin-top: 90px;
     
     padding: 15px;
@@ -191,10 +189,16 @@ button {
     margin-top: 20px;
 }
 
-.close {
+.close_but {
     color: rgb(27, 12, 230);
+    background-color: rgb(208, 218, 214);
+    border: none;
+
+    position: relative;
     float: right;
     font: 300px;
     font-weight: bold;
-    height: 50px;
+    height: 18px;
+    width: 12px;
+    padding-right: 10px;
 }

@@ -1,7 +1,6 @@
 import NewGame from './components/newGame'
 import { useState } from 'react'
 import { levels } from './levels'
-import Circle from './UI_components/Circle'
 import Game from './components/Game'
 import GameOver from './components/GameOver'
 import { useRef } from 'react'
@@ -11,7 +10,6 @@ function getRndInteger(min, max) {
 }
 
 function App() {
-
   const [player, setPlayer] = useState()
   const [circles, setCircles] = useState([])
   const [score, setScore] = useState(10)
@@ -22,29 +20,16 @@ function App() {
 
   const timeoutIdRef = useRef(null)
   const rounds = useRef(0)
-  // use below to store current number
   const currentInst = useRef(0);
 
   let pace = 1000;
   let levelsAmount;
 
   const gameSetHandler = (level, name) => {
-
-    /*   This one is returning the index which we are finding the amount */
-    /* const levelIndex = levels.findIndex(el => el.name === level); */
-
-    /*  const levelAmount = levels[levelIndex].amount; */
-
-
-    /* as it is object we can also do it this way - because of distructing */
-
     const { amount } = levels.find((el) => el.name === level);
     levelsAmount = amount;
 
-    // Magical method creating new array based on the length
-    /*  old way commented out above */
-    /*   const circlesArray = Array.from({ length: levelAmount}, (x, i) => i); */
-    const circlesArray = Array.from({ length: amount }, (x, i) => i);
+    const circlesArray = Array.from({ length: amount }, (_, i) => i);
 
     setCircles(circlesArray)
     setPlayer(
@@ -60,25 +45,24 @@ function App() {
   };
 
   const stopHandler = () => {
-    setGameOn(!gameOn)
-    setGameOver(!gameOver)
+    setGameOn((prevState) => !prevState)
+    setGameOver((prevState) => !prevState)
     clearTimeout(timeoutIdRef.current);
     timeoutIdRef.current = null;
+
   }
 
   const closeHandler = () => {
-    setGameOver(!gameOver)
-    setgameLaunch(!gameLaunch)
+    console.log('closehandler');
+    setGameOver((prevState) => !prevState)
+    setgameLaunch((prevState) => !prevState)
     setScore(0)
+    rounds.current = 0
   }
-
-  // need to bind the click handler. i.e. you need to pass it
-
+  
   const clickHandler = (id) => {
-    console.log("circle clicked")
    if (current !== id) {
     stopHandler();
-    console.log("score is", score)
     return;
    }
     setScore(score + 100)
@@ -88,6 +72,7 @@ function App() {
   const randomNumb = () => {
     if (rounds.current >= 3) {
       stopHandler();
+      return;
     }
     let nextActive;
 
@@ -97,19 +82,11 @@ function App() {
     } while (nextActive === currentInst.current);
     setCurrent(nextActive);
     currentInst.current = nextActive;
-
     rounds.current++;
-    
 
-   timeoutIdRef.current = setTimeout(randomNumb, pace)
-    console.log(nextActive);
+    timeoutIdRef.current = setTimeout(randomNumb, pace)
     pace *= 0.95;
-    console.log(nextActive)
   };
-
-
-
-
 
   return (
     <>
