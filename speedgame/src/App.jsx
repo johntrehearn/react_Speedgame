@@ -5,7 +5,7 @@ import Game from './components/Game'
 import GameOver from './components/GameOver'
 import { useRef } from 'react'
 import useSound from 'use-sound'; //use-sound install by 'npm add use-sound'
-import swallow from './assets/swallow.mp3'
+import splat from './assets/splat.wav'
 
 
 
@@ -33,7 +33,7 @@ function App() {
   let levelsAmount;
 
  
-  const [playSound] = useSound(swallow)
+  const [playSplat] = useSound(splat)
 
   const gameSetHandler = (level, name) => {
     const { amount } = levels.find((el) => el.name === level);
@@ -78,8 +78,9 @@ function App() {
     stopHandler();
     return;
    }
-   playSound;
+   
     setScore(score + 100)
+    playSplat()
     rounds.current--;
   };
 
@@ -117,7 +118,7 @@ function App() {
          clickHandler={clickHandler}
          current={current}
          />)}
-         <button onClick={playSound}>PlaySound</button>
+        {/*  <button onClick={playSound}>PlaySound</button> */}
         {gameOver && (<GameOver closeHandler={closeHandler} {...player} score={score}/>)}
       </div>
 
