@@ -4,10 +4,17 @@ import { levels } from './levels'
 import Game from './components/Game'
 import GameOver from './components/GameOver'
 import { useRef } from 'react'
+import useSound from 'use-sound'; //use-sound install by 'npm add use-sound'
+import swallow from './assets/swallow.mp3'
+
+
 
 function getRndInteger(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
 }
+
+
+
 
 function App() {
   const [player, setPlayer] = useState()
@@ -22,22 +29,28 @@ function App() {
   const rounds = useRef(0)
   const currentInst = useRef(0);
 
-  let pace = 1000;
+  let pace = 2000;
   let levelsAmount;
+
+ 
+  const [playSound] = useSound(swallow)
 
   const gameSetHandler = (level, name) => {
     const { amount } = levels.find((el) => el.name === level);
     levelsAmount = amount;
-
+    
     const circlesArray = Array.from({ length: amount }, (_, i) => i);
-
+    
     setCircles(circlesArray)
+   
     setPlayer(
       {
         level: level,
         name: name,
       }
     );
+
+    
 
     setgameLaunch((prevLaunch) => !prevLaunch)
     setGameOn(!gameOn)
@@ -65,6 +78,7 @@ function App() {
     stopHandler();
     return;
    }
+   playSound();
     setScore(score + 100)
     rounds.current--;
   };
@@ -92,14 +106,18 @@ function App() {
     <>
       <div className='circles_container'>
 
-        <h1>Save the Jungle</h1>
+        
+
         {gameLaunch && <NewGame onclick={gameSetHandler} />}
+        
         {gameOn && (<Game score={score}
+       
          circles={circles} 
          stopHandler={stopHandler} 
          clickHandler={clickHandler}
          current={current}
          />)}
+         <button onClick={playSound}>PlaySound</button>
         {gameOver && (<GameOver closeHandler={closeHandler} {...player} score={score}/>)}
       </div>
 

@@ -21,10 +21,6 @@
 }
 
 
-/* screens are San Serif - it is a safe fonts for screen
-Printing Serif
-games are any font you want - BUT CONSIDERING USER EXPERIANCE */
-
 body {
     font-family: 'Pixelify Sans', cursive;
     background-image: linear-gradient(to bottom, rgb(10, 39, 19), rgb(18, 18, 222));
@@ -39,12 +35,30 @@ body {
 
 h1 {
     font-family: 'Pixelify Sans', cursive;
+    font-size: 5rem;
+    color: rgb(4, 51, 42);
+  
+    padding: 50px 0;
+    text-align: center;
+}
+
+h2 {
+    margin-top: 5vh;
+    font-size: 28px;
+    color: rgb(15, 1, 13);
 }
 
 p {
     font-family: 'Pixelify Sans', cursive;
     color: blue;
     font-weight: 900;
+    text-colour: black;
+}
+
+input {
+    height: 30px;
+    width: 200px;
+    background-color: rgb(10, 77, 68);
 }
 
 .close_but {
@@ -53,6 +67,32 @@ p {
     height: 20px;
     z-index: 1;
 
+}
+
+.gameTitle {
+    font-size: 60px;
+    margin-bottom: 0;
+
+}
+
+.score {
+    margin-top: 0;
+    font-size: 28px;
+    color: red;
+
+}
+
+button {
+    margin-top: 100px;
+    width: 190px;
+    height: 100px;
+    border-radius: 10px;
+    background-color: rgb(21, 104, 35);
+    font-size: 28px;
+    font-family: 'Pixelify Sans', cursive;
+    border: black, solid, 25px;
+    margin: 20px;
+    margin-top: 50px;
 }
 
 /* .close:hover,
@@ -70,20 +110,8 @@ p {
 
 }
 
-h1 {
-    font-family: 'Pixelify Sans', cursive;
-    font-size: 15rem;
-    color: rgb(4, 51, 42);
-    margin-top: 10vh;
-    padding: 50px 0;
-    text-align: center;
-}
 
-h2 {
-    margin-top: 5vh;
-    font-size: 90px;
-    color: rgb(15, 1, 13);
-} */
+ */
 /* 
 p {
     font-family: 'Pixelify Sans', cursive;
@@ -93,16 +121,7 @@ p {
     color: brown;
 }
 
-button {
-    margin-top: 100px;
-    width: 500px;
-    height: 200px;
-    border-radius: 10px;
-    background-color: rgb(21, 104, 35);
-    font-size: 58px;
-    font-family: 'Pixelify Sans', cursive;
-    border: black, solid, 25px;
-}
+
 
 .circles {
 
@@ -117,7 +136,9 @@ button {
 .circle_container {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   justify-content: center;
+
 
 }
 
