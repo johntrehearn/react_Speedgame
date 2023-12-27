@@ -78,7 +78,7 @@ function App() {
     stopHandler();
     return;
    }
-   playSound();
+   playSound;
     setScore(score + 100)
     rounds.current--;
   };
